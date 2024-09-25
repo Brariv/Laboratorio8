@@ -11,17 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.uvg.laboratorio8.Layout.BottomBarScreen.navigateToBottomBarGraph
+import com.uvg.laboratorio8.Layout.BottomBarScreen.navigateToBottomBarScreen
 import com.uvg.laboratorio8.Layout.MainScreen.MainScreenDestination
 import com.uvg.laboratorio8.ui.theme.Laboratorio8Theme
 import com.uvg.laboratorio8.Layout.MainScreen.MainScreen
-import com.uvg.laboratorio8.Layout.CharactersScreen.navigateToCharactersScreen
-import com.uvg.laboratorio8.Layout.CharactersScreen.CharactersDestination
-import com.uvg.laboratorio8.Layout.CharactersScreen.CharactersScreen
-import com.uvg.laboratorio8.Layout.DetailsScreen.navigateToCharacterDetailsScreen
-import com.uvg.laboratorio8.Layout.DetailsScreen.DetailDestination
-import com.uvg.laboratorio8.Layout.DetailsScreen.DetailScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -36,30 +33,23 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = MainScreenDestination,
                         modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding)
+                            .fillMaxSize()
+                            .padding(innerPadding)
                     ){
                         MainScreen(onLoginClick = {
-                            navController.navigateToCharactersScreen(
-                                destination = CharactersDestination
+                            navController.navigateToBottomBarGraph(
+                                navOptions = NavOptions.Builder().setPopUpTo<MainScreenDestination>(
+                                    inclusive = true
+                                ).build()
                             )
                         })
-                        CharactersScreen(onCharacterClick = { characterId ->
-                            navController.navigateToCharacterDetailsScreen(
-                                destination = DetailDestination(
-                                    ID = characterId
-                                )
-
-                            )
-                        })
-                        DetailScreen(onNavigateBack = {
-                            navController.navigateUp()
-                        })
-
-
-
-
-
+                        navigateToBottomBarScreen(
+                            onLogoutClick = {
+                                navController.navigate(MainScreenDestination){
+                                    popUpTo(0)
+                                }
+                            },
+                        )
                     }
                 }
             }

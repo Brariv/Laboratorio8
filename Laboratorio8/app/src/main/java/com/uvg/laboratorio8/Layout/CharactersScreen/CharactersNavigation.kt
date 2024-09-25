@@ -4,20 +4,22 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
+import com.uvg.laboratorio8.Layout.BottomBarScreen.BottomBarScreenDestination
 import kotlinx.serialization.Serializable
 import com.uvg.laboratorio8.Layout.MainScreen.MainScreenDestination
 
 @Serializable
-data object CharactersDestination
+data object CharacterDestination
+
+
 
 fun NavController.navigateToCharactersScreen(
-    destination: CharactersDestination
+    destination: CharacterDestination
 ) {
     this.navigate(destination) {
-        popUpTo(MainScreenDestination) {
+        popUpTo(BottomBarScreenDestination) {
             inclusive = true
         }
         launchSingleTop = true
@@ -28,11 +30,10 @@ fun NavController.navigateToCharactersScreen(
 fun NavGraphBuilder.CharactersScreen(
     onCharacterClick: (Int) -> Unit
 ) {
-    composable<CharactersDestination> { backStackEntry ->
-        val destination: CharactersDestination = backStackEntry.toRoute()
+    composable<CharacterDestination> { backStackEntry ->
+        val destination: CharacterDestination = backStackEntry.toRoute()
         CharacterRoute(
-            onCharacterClick = onCharacterClick,
-            modifier = Modifier.fillMaxWidth()
+            onCharacterClick = onCharacterClick
         )
     }
 }

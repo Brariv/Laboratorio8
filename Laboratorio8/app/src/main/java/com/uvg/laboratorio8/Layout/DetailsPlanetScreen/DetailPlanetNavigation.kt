@@ -1,7 +1,6 @@
 package com.uvg.laboratorio8.Layout.DetailsScreen
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.ui.Modifier
+
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -10,24 +9,24 @@ import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DetailDestination(
+data class DetailPlanetDestination(
     val ID: Int
 )
 
 
-fun NavController.navigateToCharacterDetailsScreen(
-    destination: DetailDestination,
+fun NavController.navigateToLocationDetailsScreen(
+    destination: DetailPlanetDestination,
     navOptions: NavOptions? = null
 ) {
     this.navigate(destination, navOptions)
 }
 
-fun NavGraphBuilder.DetailScreen(
+fun NavGraphBuilder.DetailPlanetScreen(
     onNavigateBack: () -> Unit
 ) {
-    composable<DetailDestination> { backStackEntry ->
-        val destination: DetailDestination = backStackEntry.toRoute()
-        DetailScreenRoute(ID = destination.ID,
+    composable<DetailPlanetDestination> { backStackEntry ->
+        val destination: DetailPlanetDestination = backStackEntry.toRoute()
+        DetailPlanetScreenRoute(ID = destination.ID,
             onNavigateBack = onNavigateBack)
     }
 }
