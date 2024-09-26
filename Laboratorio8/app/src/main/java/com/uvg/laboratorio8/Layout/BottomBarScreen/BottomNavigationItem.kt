@@ -12,7 +12,7 @@ import com.uvg.laboratorio8.Layout.CharactersScreen.CharacterNestNav
 import com.uvg.laboratorio8.Layout.LocationScreen.LocationNestNav
 import com.uvg.laboratorio8.Layout.ProfileScreen.ProfileDestination
 
-data class BottomNavigationItem(
+data class NavigationItem(
     val title: String,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
@@ -20,19 +20,19 @@ data class BottomNavigationItem(
 )
 
 val BottomNavigationItems = listOf(
-    BottomNavigationItem(
+    NavigationItem(
         title = "Home",
         unselectedIcon = Icons.Outlined.Home,
         selectedIcon = Icons.Filled.Home,
         destination = CharacterNestNav
     ),
-    BottomNavigationItem(
+    NavigationItem(
         title = "Location",
         unselectedIcon = Icons.Outlined.LocationOn,
         selectedIcon = Icons.Filled.LocationOn,
         destination = LocationNestNav
     ),
-    BottomNavigationItem(
+    NavigationItem(
         title = "Profile",
         unselectedIcon = Icons.Outlined.Person,
         selectedIcon = Icons.Filled.Person,

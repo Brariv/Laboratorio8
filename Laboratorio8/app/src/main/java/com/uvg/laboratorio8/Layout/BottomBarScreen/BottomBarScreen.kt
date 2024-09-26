@@ -26,18 +26,18 @@ fun bottomBarNavigation(
     checkItemSelected: (Any) -> Boolean
 ){
     NavigationBar {
-        BottomNavigationItems.forEach { BottomNavigationItem ->
-            val isItemSelected = checkItemSelected(BottomNavigationItem.destination)
+        BottomNavigationItems.forEach { NavigationItem ->
+            val isItemSelected = checkItemSelected(NavigationItem.destination)
             NavigationBarItem(
                 selected =  isItemSelected,
                 onClick = {
-                    onNavItemClick(BottomNavigationItem.destination)
+                    onNavItemClick(NavigationItem.destination)
                 },
-                label = { Text(text = BottomNavigationItem.title) },
+                label = { Text(text = NavigationItem.title) },
                 icon = {
                     Icon(
-                        imageVector = if (isItemSelected) BottomNavigationItem.selectedIcon else BottomNavigationItem.unselectedIcon,
-                        contentDescription = BottomNavigationItem.title
+                        imageVector = if (isItemSelected) NavigationItem.selectedIcon else NavigationItem.unselectedIcon,
+                        contentDescription = NavigationItem.title
                     )
 
                 }
