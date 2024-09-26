@@ -52,27 +52,6 @@ fun BottomBarScreen(
     navController: NavHostController = rememberNavController()
 ) {
 
-    /*
-    var barVIibility by rememberSaveable {
-        mutableIntStateOf(false)
-    }
-
-    val currentDestination = navController.currentBackStackEntryAsState().value?.destination
-
-    barVIibility = if(currentDestination != null){
-        topLevelDestination.any { destination ->
-            currentDestination.hasRoute(destination)
-
-    }
-    */
-
-    /*
-    AnimatedVisibility(visible = barVIibility,
-            enter = slideInVertically { initialOffserY = { it }},
-                exit = slideInVertically { targetOffsetY = { it }}
-            ){
-     */
-
     Scaffold(
         bottomBar = {
             bottomBarNavigation(

@@ -39,12 +39,3 @@ val BottomNavigationItems = listOf(
         destination = ProfileDestination
     )
 )
-
-/*
-val topLevelDestination = listOf(
-    BNCharacterDestination::class,
-    BNLocationDestination::class,
-    BNProfileDestination::class
-)
-
- */
