@@ -14,8 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.uvg.laboratorio8.Layout.BottomBarScreen.navigateToBottomBarGraph
-import com.uvg.laboratorio8.Layout.BottomBarScreen.navigateToBottomBarScreen
+import com.uvg.laboratorio8.Layout.BottomBar.BottomBarScreen.navigateToBottomBarGraph
+import com.uvg.laboratorio8.Layout.BottomBar.BottomBarScreen.navigateToBottomBarScreen
 import com.uvg.laboratorio8.Layout.MainScreen.MainScreenDestination
 import com.uvg.laboratorio8.ui.theme.Laboratorio8Theme
 import com.uvg.laboratorio8.Layout.MainScreen.MainScreen
