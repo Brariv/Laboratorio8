@@ -1,29 +1,37 @@
 package com.uvg.laboratorio8.Layout.Location.ViewModel
 
-import LocationDb
+import com.uvg.laboratorio8.Data.data.local.LocationDb
 import kotlinx.coroutines.flow.MutableStateFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.uvg.laboratorio8.Data.CharacterDb
+import com.uvg.laboratorio8.Data.data.di.Dependencies
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import com.uvg.laboratorio8.Data.data.repository.LocalLocationRepository
 
 class LocationViewModel(
-    private val LocationRepository: LocationRepository
+    private val locationRepository: LocalLocationRepository
 ): ViewModel() {
+
+    init {
+        viewModelScope.launch {
+            locationRepository.populateLocalLocationDatabase()
+        }
+    }
 
     private val _state = MutableStateFlow(LocationState())
     val state = _state.asStateFlow()
 
     fun onEvent(event: LocationScreenEvent) {
         when (event) {
-            LocationScreenEvent.onLocationListClick -> onLoadCharacterList()
-            is LocationScreenEvent.onLocationClick -> onLoadCharacter(event.ID)
+            LocationScreenEvent.onLocationListClick -> onLoadLocationList()
+            is LocationScreenEvent.onLocationClick -> onLoadLocation(event.ID)
             is LocationScreenEvent.onLoadClick -> onError()
         }
     }
@@ -35,7 +43,7 @@ class LocationViewModel(
         )}
     }
 
-     private fun onLoadCharacterList() {
+     private fun onLoadLocationList() {
         viewModelScope.launch {
             val LscreenState = _state.value
 
@@ -46,28 +54,34 @@ class LocationViewModel(
 
             delay(4000)
 
-            val locations by lazy{
-                LocationDb().getAllLocations()
-            }
+
 
             if (!_state.value.hasError){
-                _state.update { it.copy(
-                    locationList = locations,
-                    isLoading = false,
-                    isSuccess = true,
-                    hasError = false
-                )}
+                try {
+                    val locations = locationRepository.getLocations()
+                    _state.update { it.copy(
+                        locationList = locations,
+                        isLoading = false,
+                        isSuccess = true,
+                        hasError = false
+                    )}
+                } catch (e: Exception) {
+                    _state.update { it.copy(
+                        isLoading = false,
+                        hasError = true
+                    )}
+                }
             }
 
         }
     }
 
-    private fun onLoadCharacter(ID: Int) {
+    private fun onLoadLocation(ID: Int) {
         viewModelScope.launch {
             val LscreenState = _state.value
 
             _state.update { it.copy(
-                location = LocationDb().getLocationById(ID),
+                location = locationRepository.getLocation(ID),
                 isLoading = true,
                 hasError = false
             )}
@@ -90,8 +104,12 @@ class LocationViewModel(
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
+                val application = checkNotNull(this[APPLICATION_KEY])
+                val db = Dependencies.provideDatabase(application)
                 LocationViewModel(
-                    LocationRepository = LocalLocationRepository()
+                    locationRepository = LocalLocationRepository(
+                        locationDao = db.locationDao()
+                    )
                 )
             }
         }

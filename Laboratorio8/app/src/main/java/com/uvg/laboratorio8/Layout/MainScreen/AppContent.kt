@@ -51,9 +51,7 @@ fun AppContent(
         when(Status){
             LoginStatus.Authenticated -> {
                 navController.navigateToBottomBarGraph(
-                    navOptions = NavOptions.Builder().setPopUpTo<StartDestination>(
-                        inclusive = true
-                    ).build()
+                    navOptions = NavOptions.Builder().setPopUpTo(0, inclusive = true).build()
                 )
             }
             LoginStatus.NonAuthenticated -> {
@@ -69,23 +67,3 @@ fun AppContent(
 
 }
 
-/*
-MainScreen(onLoginClick = {
-    navController.navigateToBottomBarGraph(
-        navOptions = NavOptions.Builder().setPopUpTo<MainScreenDestination>(
-            inclusive = true
-        ).build()
-    )
-})
-navigateToBottomBarScreen(
-onLogoutClick = {
-    navController.navigate(MainScreenDestination){
-        popUpTo(0)
-    }
-},
-)
-*
-
-
-
- */

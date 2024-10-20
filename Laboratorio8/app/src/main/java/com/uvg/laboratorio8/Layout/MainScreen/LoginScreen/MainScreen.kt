@@ -38,7 +38,13 @@ fun MainScreenRoute(
         state = state,
         onLoginClick = {
         onLoginClick()
-        viewModel.onEvent(LoginEvent.SaveName)
+            if(state.name.isNotEmpty()){
+                viewModel.onEvent(LoginEvent.SaveName)
+            }else{
+                viewModel.onEvent(LoginEvent.NameChange("Unknown"))
+                viewModel.onEvent(LoginEvent.SaveName)
+            }
+
         },
         onNameChange = {viewModel.onEvent(LoginEvent.NameChange(it))},
         modifier = modifier

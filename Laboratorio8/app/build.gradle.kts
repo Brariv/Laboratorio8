@@ -5,6 +5,7 @@ plugins {
     id("kotlin-kapt")
 }
 
+
 android {
     namespace = "com.uvg.laboratorio8"
     compileSdk = 34
@@ -54,6 +55,8 @@ android {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
     }
+
+
 }
 
 dependencies {
@@ -80,4 +83,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
 }
+

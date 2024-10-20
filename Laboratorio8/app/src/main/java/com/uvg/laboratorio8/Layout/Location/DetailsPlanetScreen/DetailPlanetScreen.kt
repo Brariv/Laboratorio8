@@ -12,16 +12,12 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.uvg.laboratorio8.Data.domain.model.Location
-import LocationDb
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -36,7 +32,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.uvg.laboratorio8.Layout.Location.ViewModel.LocationScreenEvent
 import com.uvg.laboratorio8.Layout.Location.ViewModel.LocationState
 import com.uvg.laboratorio8.Layout.Location.ViewModel.LocationViewModel
-import com.uvg.laboratorio8.ui.theme.Laboratorio8Theme
 
 @Composable
 fun DetailPlanetScreenRoute(ID: Int,
