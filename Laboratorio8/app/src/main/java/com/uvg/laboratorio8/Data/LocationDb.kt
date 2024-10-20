@@ -1,3 +1,5 @@
+import com.uvg.laboratorio8.Data.domain.model.Location
+
 // import .....Location
 
 class LocationDb {

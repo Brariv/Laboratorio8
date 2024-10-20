@@ -1,4 +1,4 @@
-package com.uvg.laboratorio8.Data
+package com.uvg.laboratorio8.Data.domain.model
 
 data class Character(
     val id: Int,

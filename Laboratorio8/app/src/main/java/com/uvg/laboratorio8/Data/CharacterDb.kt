@@ -1,5 +1,7 @@
 package com.uvg.laboratorio8.Data
 
+import com.uvg.laboratorio8.Data.domain.model.Character
+
 class CharacterDb {
     private val characters: List<Character> = listOf(
         Character(

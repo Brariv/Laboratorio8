@@ -1,4 +1,4 @@
-package com.uvg.laboratorio8.Layout.BottomBar.ProfileScreen
+package com.uvg.laboratorio8.Layout.MainScreen.ProfileScreen
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -11,7 +11,7 @@ fun NavGraphBuilder.profileScreen(
     onLogoutClick: () -> Unit
 ) {
     composable<ProfileDestination> {
-        ProfileScreen(
+        ProfileROute(
             onLogoutClick = onLogoutClick
         )
     }

@@ -10,7 +10,7 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.uvg.laboratorio8.Layout.Character.CharacterNestNav
 import com.uvg.laboratorio8.Layout.Location.LocationNestNav
-import com.uvg.laboratorio8.Layout.BottomBar.ProfileScreen.ProfileDestination
+import com.uvg.laboratorio8.Layout.MainScreen.ProfileScreen.ProfileDestination
 import com.uvg.laboratorio8.Layout.Character.CharactersScreen.CharacterDestination
 import com.uvg.laboratorio8.Layout.CharactersScreen.LocationDestination
 

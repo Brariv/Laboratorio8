@@ -10,11 +10,14 @@ import kotlinx.serialization.Serializable
 @Serializable
 data object BottomBarScreenDestination
 
+
 fun NavController.navigateToBottomBarGraph(
     navOptions: NavOptions? = null
 ){
     this.navigate(BottomBarScreenDestination, navOptions)
 }
+
+
 
 fun NavGraphBuilder.navigateToBottomBarScreen(
     onLogoutClick: () -> Unit

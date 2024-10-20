@@ -1,6 +1,6 @@
 package com.uvg.laboratorio8.Layout.Location.ViewModel
 
-import Location
+import com.uvg.laboratorio8.Data.domain.model.Location
 
 
 data class LocationState(

@@ -26,7 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import com.uvg.laboratorio8.Layout.Character.CharacterNestNav
 import com.uvg.laboratorio8.Layout.Character.characterGraph
 import com.uvg.laboratorio8.Layout.Location.locationGraph
-import com.uvg.laboratorio8.Layout.BottomBar.ProfileScreen.profileScreen
+import com.uvg.laboratorio8.Layout.MainScreen.ProfileScreen.profileScreen
 
 
 @Composable

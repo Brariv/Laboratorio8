@@ -1,4 +1,4 @@
-package com.uvg.laboratorio8.Layout.BottomBar.ProfileScreen
+package com.uvg.laboratorio8.Layout.MainScreen.ProfileScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,19 +20,45 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.uvg.laboratorio8.Layout.MainScreen.ViewModel.LoginEvent
+import com.uvg.laboratorio8.Layout.MainScreen.ViewModel.LoginViewModel
 import com.uvg.laboratorio8.ui.theme.Laboratorio8Theme
+
+@Composable
+fun ProfileROute(
+    onLogoutClick: () -> Unit,
+    viewModel: LoginViewModel = viewModel(factory = LoginViewModel.Factory)
+) {
+
+    val userNameState by viewModel.userNameState.collectAsStateWithLifecycle()
+
+    ProfileScreen(
+        onLogoutClick = {
+            onLogoutClick()
+            viewModel.onEvent(LoginEvent.DeleteName)
+        },
+        userNameState = userNameState
+
+    )
+}
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen(onLogoutClick: () -> Unit) {
+fun ProfileScreen(onLogoutClick: () -> Unit,
+                  userNameState: String?
+
+
+) {
+
     Column(modifier = Modifier.fillMaxSize()) {
-
-
     TopAppBar(
         title = { Text("Profile") }, colors = TopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
@@ -68,7 +94,7 @@ fun ProfileScreen(onLogoutClick: () -> Unit) {
             horizontalArrangement = androidx.compose.foundation.layout.Arrangement.SpaceBetween
         ) {
             Text(text = "Nombre: ")
-            Text(text = "Brandon Rivera")
+            Text(text = if (userNameState != null && userNameState != "") userNameState else "Unknown")
         }
         Spacer(modifier = Modifier.size(8.dp))
         Row(
@@ -99,7 +125,9 @@ fun ProfileScreen(onLogoutClick: () -> Unit) {
 fun MainScreenPreview() {
     Laboratorio8Theme {
         Surface {
-            ProfileScreen(onLogoutClick = {})
+            ProfileScreen(onLogoutClick = {},
+            userNameState = "Brandon Rivera"
+            )
         }
     }
 }

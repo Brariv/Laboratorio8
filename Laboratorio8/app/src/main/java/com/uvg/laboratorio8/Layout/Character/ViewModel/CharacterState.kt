@@ -1,6 +1,6 @@
 package com.uvg.laboratorio8.Layout.Character.ViewModel
 
-import com.uvg.laboratorio8.Data.Character
+import com.uvg.laboratorio8.Data.domain.model.Character
 
 data class CharacterState(
     val character: Character? = null,

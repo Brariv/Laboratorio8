@@ -1,14 +1,11 @@
 package com.uvg.laboratorio8.Layout.Character.CharactersScreen
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import com.uvg.laboratorio8.Layout.BottomBar.BottomBarScreen.BottomBarScreenDestination
 import kotlinx.serialization.Serializable
-import com.uvg.laboratorio8.Layout.MainScreen.MainScreenDestination
 
 @Serializable
 data object CharacterDestination

@@ -1,6 +1,6 @@
 package com.uvg.laboratorio8.Layout.CharactersScreen
 
-import Location
+import com.uvg.laboratorio8.Data.domain.model.Location
 import LocationDb
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

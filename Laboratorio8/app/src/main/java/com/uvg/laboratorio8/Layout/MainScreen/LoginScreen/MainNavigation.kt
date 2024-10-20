@@ -1,4 +1,4 @@
-package com.uvg.laboratorio8.Layout.MainScreen
+package com.uvg.laboratorio8.Layout.MainScreen.LoginScreen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.ui.Modifier
