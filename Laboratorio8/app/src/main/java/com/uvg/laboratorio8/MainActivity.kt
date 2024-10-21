@@ -12,7 +12,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.uvg.laboratorio8.Layout.MainScreen.AppContent
 import com.uvg.laboratorio8.ui.theme.Laboratorio8Theme
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.uvg.laboratorio8.Layout.MainScreen.ViewModel.LoginViewModel
+import com.uvg.laboratorio8.Layout.MainScreen.ViewModel.LoginStatus
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -22,7 +24,12 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        installSplashScreen().setKeepOnScreenCondition {
+            loginViewModel.authStatus.value is LoginStatus.Loading
+        }
+
+        
         setContent {
             Laboratorio8Theme {
                 Surface {

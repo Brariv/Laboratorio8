@@ -2,4 +2,10 @@
 <resources>
 
     <style name="Theme.Laboratorio8" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Laboratorio8.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_color</item>
+        <item name="windowSplashScreenIconBackgroundColor">@android:color/darker_gray</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_grade</item>
+        <item name="postSplashScreenTheme">@style/Theme.Laboratorio8</item>
+    </style>
 </resources>
