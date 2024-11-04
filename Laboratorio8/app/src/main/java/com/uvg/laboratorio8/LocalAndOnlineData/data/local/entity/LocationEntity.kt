@@ -1,9 +1,8 @@
-package com.uvg.laboratorio8.Data.data.local.entity
+package com.uvg.laboratorio8.LocalAndOnlineData.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.uvg.laboratorio8.Data.domain.model.Character
-import com.uvg.laboratorio8.Data.domain.model.Location
+import com.uvg.laboratorio8.LocalAndOnlineData.domain.model.Location
 
 @Entity
 data class LocationEntity(

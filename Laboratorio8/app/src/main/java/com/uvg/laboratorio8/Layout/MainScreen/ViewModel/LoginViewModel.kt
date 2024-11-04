@@ -1,6 +1,6 @@
 package com.uvg.laboratorio8.Layout.MainScreen.ViewModel
 
-import com.uvg.laboratorio8.Data.domain.usrpref.UserPreferences
+import com.uvg.laboratorio8.LocalAndOnlineData.domain.usrpref.UserPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.uvg.laboratorio8.dataStore
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.uvg.laboratorio8.Data.data.DataStoreUserPrefs
+import com.uvg.laboratorio8.LocalAndOnlineData.data.DataStoreUserPrefs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

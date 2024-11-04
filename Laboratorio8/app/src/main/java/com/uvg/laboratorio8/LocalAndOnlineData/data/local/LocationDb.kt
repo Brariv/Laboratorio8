@@ -1,6 +1,6 @@
-package com.uvg.laboratorio8.Data.data.local
+package com.uvg.laboratorio8.LocalAndOnlineData.data.local
 
-import com.uvg.laboratorio8.Data.domain.model.Location
+import com.uvg.laboratorio8.LocalAndOnlineData.domain.model.Location
 
 // import .....Location
 

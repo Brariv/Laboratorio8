@@ -77,6 +77,8 @@ dependencies {
     kapt(libs.androidx.room.compiler)
     implementation("io.coil-kt:coil-compose:2.7.0")
     implementation(libs.androidx.room.ktx)
+    implementation(libs.bundles.ktor)
+    implementation(libs.bundles.coil)
     //implementation(libs.androidx.splashscreen)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

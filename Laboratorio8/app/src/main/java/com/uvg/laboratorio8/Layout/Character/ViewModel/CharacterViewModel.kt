@@ -7,28 +7,30 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.uvg.laboratorio8.Data.data.AppDataBase
-import com.uvg.laboratorio8.Data.data.di.Dependencies
-import com.uvg.laboratorio8.Data.data.local.CharacterDb
+import com.uvg.laboratorio8.LocalAndOnlineData.data.di.Dependencies
+import com.uvg.laboratorio8.LocalAndOnlineData.data.di.KtorDependencies
+import com.uvg.laboratorio8.LocalAndOnlineData.data.network.KtorRickAndMortyApi
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
-import com.uvg.laboratorio8.Data.data.repository.LocalCharacterRepository
-import com.uvg.laboratorio8.Data.data.local.dao.CharacterDao
+import com.uvg.laboratorio8.LocalAndOnlineData.data.repository.LocalCharacterRepository
 
 
 class CharacterViewModel(
     private val characterRepository: LocalCharacterRepository
 
+
 ): ViewModel() {
 
     init {
         viewModelScope.launch {
-            characterRepository.populateLocalCharacterDatabase()
+            try {
+                characterRepository.populateOnlineCharacterDatabase()
+            } catch (e: Exception) {
+                characterRepository.populateLocalCharacterDatabase()
+            }
+
         }
     }
 
@@ -52,6 +54,10 @@ class CharacterViewModel(
 
      private fun onLoadCharacterList() {
         viewModelScope.launch {
+
+
+
+
             val CscreenState = _state.value
 
 
@@ -113,9 +119,11 @@ class CharacterViewModel(
             initializer {
                 val application = checkNotNull(this[APPLICATION_KEY])
                 val db = Dependencies.provideDatabase(application)
+                val api = KtorRickAndMortyApi()
                 CharacterViewModel(
                     characterRepository = LocalCharacterRepository(
-                        characterDao = db.characterDao()
+                        characterDao = db.characterDao(),
+                        api = api
                     )
                 )
             }

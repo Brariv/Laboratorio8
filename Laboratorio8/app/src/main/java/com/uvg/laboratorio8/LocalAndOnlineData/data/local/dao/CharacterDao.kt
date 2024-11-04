@@ -1,10 +1,10 @@
-package com.uvg.laboratorio8.Data.data.local.dao
+package com.uvg.laboratorio8.LocalAndOnlineData.data.local.dao
 
 import androidx.room.Insert
 import androidx.room.Dao
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.uvg.laboratorio8.Data.data.local.entity.CharacterEntity
+import com.uvg.laboratorio8.LocalAndOnlineData.data.local.entity.CharacterEntity
 
 @Dao
 interface CharacterDao {

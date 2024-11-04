@@ -1,6 +1,6 @@
-package com.uvg.laboratorio8.Data.data.local
+package com.uvg.laboratorio8.LocalAndOnlineData.data.local
 
-import com.uvg.laboratorio8.Data.domain.model.Character
+import com.uvg.laboratorio8.LocalAndOnlineData.domain.model.Character
 
 class CharacterDb {
     private val characters: List<Character> = listOf(

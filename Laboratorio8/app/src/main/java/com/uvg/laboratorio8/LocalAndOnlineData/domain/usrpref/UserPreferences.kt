@@ -1,4 +1,4 @@
-package com.uvg.laboratorio8.Data.domain.usrpref
+package com.uvg.laboratorio8.LocalAndOnlineData.domain.usrpref
 
 import kotlinx.coroutines.flow.Flow
 

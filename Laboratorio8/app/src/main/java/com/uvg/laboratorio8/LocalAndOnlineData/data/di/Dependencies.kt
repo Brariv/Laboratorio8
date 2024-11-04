@@ -1,8 +1,8 @@
-package com.uvg.laboratorio8.Data.data.di
+package com.uvg.laboratorio8.LocalAndOnlineData.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.uvg.laboratorio8.Data.data.AppDataBase
+import com.uvg.laboratorio8.LocalAndOnlineData.data.AppDataBase
 
 object Dependencies {
     private var database: AppDataBase? = null

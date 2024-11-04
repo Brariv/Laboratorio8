@@ -1,6 +1,5 @@
 package com.uvg.laboratorio8.Layout.Location.ViewModel
 
-import com.uvg.laboratorio8.Data.data.local.LocationDb
 import kotlinx.coroutines.flow.MutableStateFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -8,12 +7,13 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.uvg.laboratorio8.Data.data.di.Dependencies
+import com.uvg.laboratorio8.LocalAndOnlineData.data.di.Dependencies
+import com.uvg.laboratorio8.LocalAndOnlineData.data.network.KtorRickAndMortyApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import com.uvg.laboratorio8.Data.data.repository.LocalLocationRepository
+import com.uvg.laboratorio8.LocalAndOnlineData.data.repository.LocalLocationRepository
 
 class LocationViewModel(
     private val locationRepository: LocalLocationRepository
@@ -21,7 +21,11 @@ class LocationViewModel(
 
     init {
         viewModelScope.launch {
-            locationRepository.populateLocalLocationDatabase()
+            try {
+                locationRepository.populateOnlineLocationDatabase()
+            } catch (e: Exception) {
+                locationRepository.populateLocalLocationDatabase()
+            }
         }
     }
 
@@ -106,9 +110,11 @@ class LocationViewModel(
             initializer {
                 val application = checkNotNull(this[APPLICATION_KEY])
                 val db = Dependencies.provideDatabase(application)
+                val api = KtorRickAndMortyApi()
                 LocationViewModel(
                     locationRepository = LocalLocationRepository(
-                        locationDao = db.locationDao()
+                        locationDao = db.locationDao(),
+                        api = api
                     )
                 )
             }
